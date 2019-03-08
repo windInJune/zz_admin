@@ -25,7 +25,8 @@ const insertSchool = localAPI + '/school/insertSchool'
 const deleteSchool = localAPI + '/school/deleteSchool'
 const editSchool = localAPI + '/school/editSchool'
 const getDataStatistics = localAPI + '/school/getDataStatistics'
-
+//修改用户信息
+const editSystemUser = localAPI + '/user/editSystemUser'
 // ibox
 const getIboxList = localAPI + '/iboxInfo/getIboxList'
 const getIbox = localAPI + '/iboxInfo/getIbox'
@@ -52,6 +53,7 @@ const updateBoxtask = localAPI + '/boxtask/updateBoxtask'
 
 export default
 {
+  editSystemUser,
   localAPI,
   userlogin,
   getUserList,
