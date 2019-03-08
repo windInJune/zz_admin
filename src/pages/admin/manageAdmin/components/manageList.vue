@@ -6,6 +6,9 @@
     </ul>
     <!-- 表单信息 -->
     <el-table :data="pageData" highlight-current-row :header-cell-style="headerClassFn"  style="width: 100%;border:1px solid rgba(229, 229, 228, 1)" v-loading="loading">
+      <el-table-column type="index" label="序号" width="80">
+        <template slot-scope="scope">{{scope.$index + 1 + (currentPage-1)*10}}</template>
+      </el-table-column>
       <el-table-column prop="schoolName" label="机构名称" width="165"></el-table-column>
       <el-table-column prop="schoolId" label="机构ID"></el-table-column>
       <el-table-column prop="schoolType" label="类型">
@@ -274,7 +277,7 @@ export default {
     return {
       total: 0,
       currentPage: 1,
-      pageSize: 8,
+      pageSize: 10,
       pageData: [],
       loading: false,
       addUser: false,

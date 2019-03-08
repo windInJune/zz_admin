@@ -12,6 +12,9 @@
     </div>
     <!-- 表单信息 -->
     <el-table :data="pageData" highlight-current-row :header-cell-style="headerClassFn"  style="width: 100%;border:1px solid rgba(229, 229, 228, 1)" v-loading="loading">
+      <el-table-column type="index" label="序号" width="80">
+        <template slot-scope="scope">{{scope.$index + 1 + (currentPage-1)*10}}</template>
+      </el-table-column>
       <el-table-column prop="courseName" label="课程名称"></el-table-column>
       <el-table-column prop="taskName" label="任务名称"></el-table-column>
       <el-table-column prop="trainingScore" label="操作分"></el-table-column>
@@ -43,7 +46,7 @@ export default {
     return {
       total: 0,
       currentPage: 1,
-      pageSize: 3,
+      pageSize: 10,
       pageData: [],
       userData:[],
       loading: false

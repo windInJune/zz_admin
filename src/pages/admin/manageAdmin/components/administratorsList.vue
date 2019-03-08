@@ -32,6 +32,9 @@
       </li>
     </ul>
     <el-table :data="pageData" highlight-current-row :header-cell-style="headerClassFn" style="width: 100%;border:1px solid rgba(229, 229, 228, 1)" v-loading="loading">
+      <el-table-column type="index" label="序号" width="80">
+        <template slot-scope="scope">{{scope.$index + 1 + (currentPage-1)*10}}</template>
+      </el-table-column>
       <el-table-column prop="userName" label="姓名" width="180"></el-table-column>
       <el-table-column prop="userZhinum" label="知号"></el-table-column>
       <el-table-column prop="userSex" label="性别">
@@ -218,7 +221,7 @@ export default {
     return {
       total: 0,
       currentPage: 1,
-      pageSize: 8,
+      pageSize: 10,
       pageData: [],
       loading: false,
       detaildialog: false,
