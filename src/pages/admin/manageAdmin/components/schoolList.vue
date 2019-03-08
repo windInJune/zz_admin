@@ -332,9 +332,9 @@ export default {
       };
       getCustomUserList(_data).then(res => {
         this.pageData = res.data.resultObject.data;
-        this.currentPage = res.data.resultObject.currentPage;
+        // this.currentPage = res.data.resultObject.currentPage;
         this.total = res.data.resultObject.totalCount;
-        this.pageSize = res.data.resultObject.pageSize;
+        // this.pageSize = res.data.resultObject.pageSize;
         this.loading = false;
       });
     },

@@ -432,10 +432,10 @@ export default {
           console.log(res);
           if (res.data.status === 200) {
             this.pageData = res.data.resultObject.data;
-            this.currentPage = res.data.resultObject.currentPage;
+            // this.currentPage = res.data.resultObject.currentPage;
             this.total = res.data.resultObject.totalCount;
-            this.pageSize = res.data.resultObject.pageSize;
-            const { items, currentPage } = res.data.resultObject;
+            // this.pageSize = res.data.resultObject.pageSize;
+            // const { items, currentPage } = res.data.resultObject;
             this.IBOXStatus = res.data.resultObject.iboxStatus;
             console.log(res.data.resultObject.iboxStatus);
           } else if (res.data.status === 511) {
