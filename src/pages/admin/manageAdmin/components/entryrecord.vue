@@ -100,7 +100,7 @@ export default {
     loadData() {
       this.loading = true;
       let _data = {
-        systembId:localStorage.getItem("systembId"),
+        systembId:localStorage.getItem("systembIdZz"),
         classId: this.classValue, //班级编号
         searchName: this.serarchValue, //学员姓名
         pageNum: this.currentPage,

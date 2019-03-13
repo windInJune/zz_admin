@@ -94,8 +94,8 @@ export default {
     };
   },
   created() {
-    this.userName = localStorage.getItem("userName");
-    this.sex = localStorage.getItem("sex");
+    this.userName = localStorage.getItem("userNameZz");
+    this.sex = localStorage.getItem("sexZz");
   }
 };
 </script>

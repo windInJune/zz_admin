@@ -66,7 +66,11 @@
       <el-table-column prop="hierarchy" label="层级"></el-table-column>
       <el-table-column prop="expandScore" label="拓展分"></el-table-column>
 
-      <el-table-column prop="timeCost" label="耗时"></el-table-column>
+      <el-table-column prop="timeCost" label="考试用时">
+         <template slot-scope="scope">
+              <span>{{scope.row.timeCost | settimems}}</span>
+            </template>
+      </el-table-column>
 
       <el-table-column prop="iboxName" label="考试地点"></el-table-column>
       <el-table-column prop="finishTime" label="完成时间"></el-table-column>
@@ -144,7 +148,7 @@ export default {
     loadData() {
       this.loading = true;
       let _data = {
-        systembId:localStorage.getItem("systembId"),
+        systembId:localStorage.getItem("systembIdZz"),
         classId: this.classValue, //班级编号
         gradeId: this.GradeValue, //当前用户id
         schoolId: this.schoolValue,
@@ -257,12 +261,12 @@ export default {
       });
     },
     getBoxtaskInfoIdListFn(){
-      getBoxtaskInfoIdList(localStorage.getItem("systembId")).then(res => {
+      getBoxtaskInfoIdList(localStorage.getItem("systembIdZz")).then(res => {
          console.log(res)
       })
     },
     getSysCourseListFn(){
-      getSysCourseList(localStorage.getItem("systembId")).then(res => {
+      getSysCourseList(localStorage.getItem("systembIdZz")).then(res => {
         this.kc = res.data.resultObject.data
       })
     },
@@ -316,7 +320,7 @@ export default {
       this.loadData();
     },
     outer(){
-      generateSheetForScoreListCJ(localStorage.getItem("systembId")).then(res => {
+      generateSheetForScoreListCJ(localStorage.getItem("systembIdZz")).then(res => {
         window.open(res.data.resultObject)
       })
     }

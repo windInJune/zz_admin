@@ -4,7 +4,7 @@
       <li class="left"><span  @click="$router.go(-1)" style="cursor:pointer">成绩管理</span><i class="el-icon-caret-right"></i> 学员成绩汇总</li>
     </ul>
     <div class="userBox">
-       <img :src="'http://172.16.1.207:8005/'+userData.userPhoto" alt="">
+       <img :src="userData.userPhoto" alt="">
        <h3>{{userData.userName}}考评成绩汇总</h3>
     </div>
     <div class="outerBox">
@@ -20,7 +20,11 @@
       <el-table-column prop="trainingScore" label="操作分"></el-table-column>
       <el-table-column prop="hierarchy" label="层级"></el-table-column>
       <el-table-column prop="expandScore" label="拓展分" width="120"></el-table-column>
-      <el-table-column prop="timeCost" label="考试用时" width="120"></el-table-column>
+      <el-table-column prop="timeCost" label="考试用时" width="120">
+         <template slot-scope="scope">
+              <span>{{scope.row.timeCost | settimems}}</span>
+            </template>
+      </el-table-column>
       <el-table-column prop="iboxName" label="考试地点" width="120"></el-table-column>
       <el-table-column prop="finishTime" label="完成时间" width="120"></el-table-column>
     </el-table>
