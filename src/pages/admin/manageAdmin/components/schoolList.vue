@@ -48,12 +48,12 @@
       style="width: 100%;border:1px solid rgba(229, 229, 228, 1)"
       v-loading="loading"
     >
-    <el-table-column type="index" label="序号" width="80">
+    <el-table-column type="index" label="序号">
         <template slot-scope="scope">{{scope.$index + 1 + (currentPage-1)*10}}</template>
       </el-table-column>
-      <el-table-column prop="userName" label="姓名" width="100"></el-table-column>
+      <el-table-column prop="userName" label="姓名" ></el-table-column>
       <el-table-column prop="userZhinum" label="知号"></el-table-column>
-      <el-table-column prop="userSex" label="性别" width="60">
+      <el-table-column prop="userSex" label="性别" >
         <template slot-scope="scope">
           <span v-show="scope.row.userSex == 0">保密</span>
           <span v-show="scope.row.userSex == 1">男</span>
@@ -67,15 +67,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="userCard" label="身份证号" width="150"></el-table-column>
-      <el-table-column prop="schoolName" label="机构" width="160">
-        <template slot-scope="scope">
-          <p>{{ scope.row.schoolName }}</p>
-          <!-- <el-popover trigger="hover" placement="top">
-            <div slot="reference" >
-              <el-tag size="medium">{{ scope.row.schoolName}}</el-tag>
-            </div>
-          </el-popover>-->
-        </template>
+      <el-table-column prop="schoolName" label="机构">
       </el-table-column>
       <el-table-column prop="gradeName" label="年级"></el-table-column>
       <el-table-column prop="className" label="班级"></el-table-column>
@@ -419,7 +411,6 @@ export default {
     changePassword(index, row) {
       this.dialogRePassword = true;
       this.useId = row.userId;
-      console.log(this.useId);
     },
     dialogRePasswordSubmit() {
       let passwordPattern = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,15}$/;
@@ -435,7 +426,6 @@ export default {
           )
           .then(
             res => {
-              console.log(res);
               if (res.body.status == 512) {
                 this.$notify({
                   title: "警告",
@@ -470,7 +460,6 @@ export default {
       });
     },
     schoolChange() {
-      console.log(this.schoolValue);
       this.GradeValue = "";
       this.classValue = "";
       Vue.http.headers.common["userToken"] = getCookie("userToken");
@@ -482,7 +471,6 @@ export default {
             this.GradeValue = "";
             this.classValue = "";
             this.GradeList = res.data.resultObject.data;
-            console.log(this.GradeList);
           }
         });
       this.loadData();

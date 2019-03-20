@@ -50,7 +50,11 @@
       <el-table-column prop="gradeName" label="年级"></el-table-column>
       <el-table-column prop="className" label="班级"></el-table-column>
       <el-table-column prop="inOutTime" label="进出时间" width="260"></el-table-column>
-      <el-table-column prop="duration" label="活动时长"></el-table-column>
+      <el-table-column prop="entryTime" label="活动时长">
+        <template slot-scope="scope">
+              <span>{{scope.row.entryTime | timeSlate(scope.row.outTime)}}</span>
+          </template>
+      </el-table-column>
       <el-table-column prop="iboxName" label="IBOX" width="180"></el-table-column>
 
     </el-table>
@@ -89,6 +93,14 @@ export default {
       statusDetail: ""
     };
   },
+  filters:{
+    timeSlate(v,s){
+      let _s = (Number(Date.parse(new Date(s))) - Number(Date.parse(new Date(v))))/1000
+      let ss = Math.floor((_s / 60))
+      let mm = Math.floor((_s % 60))
+      return ss + '分' + mm + '秒'
+    }
+  },
   methods: {
     headerClassFn(row, column, rowIndex, columnIndex) {
       return "color:#434343;background:rgba(245,245,245,1);font-size:12px;";
@@ -110,6 +122,7 @@ export default {
       };
       getEntryrecordList(_data).then(res => {
         if (res.data.status === 200) {
+          console.log(res.data.resultObject.data)
           this.pageData = res.data.resultObject.data;
           this.total = res.data.resultObject.totalCount;
         } else if (res.data.status === 511) {
@@ -129,7 +142,6 @@ export default {
       });
     },
     schoolChange() {
-      console.log(this.schoolValue);
       this.GradeValue = "";
       this.classValue = "";
       Vue.http.headers.common["userToken"] = getCookie("userToken");
@@ -137,26 +149,21 @@ export default {
         .get(this.global.getGrades + "?schoolId=" + this.schoolValue)
         .then(res => {
           if (res.data.status === 200) {
-            console.log(res);
             this.GradeValue = "";
             this.classValue = "";
             this.GradeList = res.data.resultObject.data;
-            console.log(this.GradeList);
           }
         });
       this.loadData();
     },
     GradeChange() {
-      console.log(this.schoolValue);
       Vue.http.headers.common["userToken"] = getCookie("userToken");
       this.$http
         .get(this.global.getClass + "?userGradeid=" + this.GradeValue)
         .then(res => {
           if (res.data.status === 200) {
-            console.log(res);
             this.classValue = "";
             this.classList = res.data.resultObject.data;
-            console.log(this.classList);
           }
         });
       this.loadData();

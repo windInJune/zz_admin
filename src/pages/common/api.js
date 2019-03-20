@@ -41,10 +41,10 @@ const  getScoreManagementListByUserId = (data) => {
 }
 //导出汇总
 const  generateSheetForScoreByUserId = (data) => {
-   return  axiosfn('/scoreManagement/generateSheetForScoreByUserId',data)
+   return  axiosfn('scoreManagement/generateSheetForScoreByUserId',data)
 }
 //获取用户信息
 const  getCustomUserById = (userId) => {
-   return  axiosfn('/customerUser/getCustomUserById',{userId})
+   return  axiosfn('customerUser/getCustomUserById',{userId})
 }
 export {getCustomUserById,getScoreManagementListByUserId,generateSheetForScoreByUserId,generateSheetForScoreListCJ, getEntryrecordList,getScoreManagementList,getCustomUserList,userLogin,getBoxtaskInfoIdList,getSysCourseList}

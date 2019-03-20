@@ -3,7 +3,7 @@
     <el-row class="tac">
       <el-col :span="24">
         <div class="head">
-          <img class="head-icon" :src="userImgs || userHeadSrc" alt>
+          <img class="head-icon" :src="userImgs == 'undefined' || !userImgs? userHeadSrc :  userImgs" alt>
           <h2>
             {{this.userName}}
             <i class="iconfont boy" v-show="this.sex == '男'">&#xe648;</i>
@@ -36,6 +36,12 @@
               <span slot="title">成绩管理</span>
             </el-menu-item>
           </router-link>
+          <router-link :to="{path: '/manageAdmin/iboxList' }">
+            <el-menu-item index="5" class="list">
+              <!-- <i class="el-icon-setting"></i> -->
+              <span slot="title">IBOX管理</span>
+            </el-menu-item>
+          </router-link>
           <router-link :to="{path: '/manageAdmin/entryrecord' }">
             <el-menu-item index="7" class="list">
               <!-- <i class="el-icon-setting"></i> -->
@@ -46,7 +52,7 @@
             <el-menu-item index="5" class="list">
               <span slot="title">IBOX管理</span>
             </el-menu-item>
-          </router-link>-->
+          </router-link> -->
           <!-- <router-link :to="{path: '/manageAdmin/courseList' }">
             <el-menu-item index="6" class="list last-list">
               <span slot="title">课程管理</span>

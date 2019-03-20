@@ -84,7 +84,7 @@ export default {
               this.sex = res.data.resultObject.userSex;
               localStorage.setItem("userNameZz", res.data.resultObject.userName);
               localStorage.setItem(
-                "systemName",
+                "systemNameZz",
                 res.data.resultObject.userLoginname
               );
               localStorage.setItem("userIdZz", res.data.resultObject.userId);

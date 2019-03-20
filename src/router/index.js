@@ -9,6 +9,8 @@ import AdministratorsList from '@/pages/admin/manageAdmin/components/administrat
 import achievement from '@/pages/admin/manageAdmin/components/achievement'
 import entryrecord from '@/pages/admin/manageAdmin/components/entryrecord'
 import userInfo from '@/pages/admin/userinfo'
+import IBOXList from '@/pages/admin/manageAdmin/components/IBOXList'
+import iboxDetail from '@/pages/admin/manageAdmin/monitor'
 // import IBOXList from '@/pages/admin/manageAdmin/components/IBOXList'
 // import CourseList from '@/pages/admin/manageAdmin/components/CourseList'
 Vue.use(Router)
@@ -25,6 +27,11 @@ export default new Router({
       component: ManageAdmin,
       redirect: '/manageAdmin/manageList',
       children: [
+        {
+          path: 'iboxdetail',
+          name: 'iboxdetail',
+          component: iboxDetail
+        },
         {
           path: 'entryrecord',
           name: 'entryrecord',
@@ -60,11 +67,11 @@ export default new Router({
           name: 'achievement',
           component: achievement
         },
-        // {
-        //   path: 'iboxList',
-        //   name: 'IBOXList',
-        //   component: IBOXList
-        // },
+        {
+          path: 'iboxList',
+          name: 'IBOXList',
+          component: IBOXList
+        },
         // {
         //   path: 'courseList',
         //   name: 'CourseList',

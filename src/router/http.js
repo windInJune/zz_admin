@@ -11,13 +11,12 @@ import {
 } from "../assets/js/cookie.js";
 let baseUrl
 if (process.env.NODE_ENV == 'development') {
-    baseUrl = 'http://172.16.1.165/ibox/';
+    baseUrl = 'http://47.110.226.59/ibox/';
 } else {
-    baseUrl = 'http://172.16.1.165/ibox/';
+    baseUrl = 'http://47.110.226.59/ibox/';
     // baseUrl = 'http://47.110.226.59/ibox/'; //线上url
 }
 const axiosfn = (url = '', data = {}, type = 'GET') => {
-  console.log()
   type = type.toUpperCase();
   url = baseUrl + url;
   let dataStr = ''; //数据拼接字符串

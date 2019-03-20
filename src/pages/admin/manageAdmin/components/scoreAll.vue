@@ -1,10 +1,10 @@
 <template>
   <div class="adminList">
-    <ul class="top">
+    <ul class="title-icon">
       <li class="left"><span  @click="$router.go(-1)" style="cursor:pointer">成绩管理</span><i class="el-icon-caret-right"></i> 学员成绩汇总</li>
     </ul>
     <div class="userBox">
-       <img :src="userData.userPhoto" alt="">
+       <img :src="userData.userPhoto == '' || userData.userPhoto == 'undefind' ? staticHead:userData.userPhoto" alt="">
        <h3>{{userData.userName}}考评成绩汇总</h3>
     </div>
     <div class="outerBox">
@@ -26,7 +26,7 @@
             </template>
       </el-table-column>
       <el-table-column prop="iboxName" label="考试地点" width="120"></el-table-column>
-      <el-table-column prop="finishTime" label="完成时间" width="120"></el-table-column>
+      <el-table-column prop="finishTime" label="完成时间" width="180"></el-table-column>
     </el-table>
     <el-pagination
       background
@@ -48,6 +48,7 @@ export default {
   name: "AdminList",
   data() {
     return {
+      staticHead:require('../../../../assets/images/userhead.png'),
       total: 0,
       currentPage: 1,
       pageSize: 10,
@@ -62,7 +63,9 @@ export default {
         userId:this.$route.query.userId,
         userName:this.userData.userName
       }).then(res => {
-        window.open(res.data.resultObject)
+         if(res.data.status == 200){
+              window.open(res.data.resultObject);
+          }
       })
     },
     // 处理页号改变
@@ -209,5 +212,19 @@ export default {
   .iconfont-color-blue{
     font-size: 12px;
   }
+  }
+  .title-icon {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:15px;
+    li {
+      flex-basis: 200px;
+      font-size: 14px;
+    }
+    li:first-child {
+      padding-top: 10px;
+      text-align: left;
+      font-weight: bolder;
+    }
   }
 </style>
