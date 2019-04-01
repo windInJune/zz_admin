@@ -88,7 +88,7 @@ export default {
                 res.data.resultObject.userLoginname
               );
               localStorage.setItem("userIdZz", res.data.resultObject.userId);
-              localStorage.setItem("systembIdZz", res.data.resultObject.systembId);
+              localStorage.setItem("systembIdZz", Number(res.data.resultObject.systembId));
               localStorage.setItem("sexZz", this.sex);
               localStorage.setItem("userTypeZz", res.data.resultObject.userType);
               if (res.data.resultObject.userType == "2") {
