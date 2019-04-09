@@ -719,6 +719,8 @@ export default {
         let equipApi = this.global.insertIbox;
         if (this.editEquip) {
           equipApi = this.global.editIbox;
+        }else{
+          this.iboxId = "";
         }
         if ((this.detailData.versionTitle = "通用型")) {
           this.detailData.versionTitle = 1;
