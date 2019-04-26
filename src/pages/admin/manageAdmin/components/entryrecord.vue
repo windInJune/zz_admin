@@ -141,6 +141,7 @@ export default {
       });
     },
     schoolChange() {
+      this.currentPage = 1;
       this.GradeValue = "";
       this.classValue = "";
       Vue.http.headers.common["userToken"] = getCookie("userToken");
@@ -156,6 +157,7 @@ export default {
       this.loadData();
     },
     GradeChange() {
+      this.currentPage = 1;
       Vue.http.headers.common["userToken"] = getCookie("userToken");
       this.$http
         .get(this.global.getClass + "?userGradeid=" + this.GradeValue)
@@ -168,9 +170,11 @@ export default {
       this.loadData();
     },
     classChange() {
+      this.currentPage = 1;
       this.loadData();
     },
     searchSubmit() {
+      this.currentPage = 1;
       this.loadData();
     }
   },
